@@ -1,5 +1,5 @@
 {
-    "name": "PALSA",
+    "name": "palsa-pos/palsa-pos",
     "type": "project",
     "description": "The skeleton application for the Laravel framework.",
     "keywords": ["laravel", "framework"],
