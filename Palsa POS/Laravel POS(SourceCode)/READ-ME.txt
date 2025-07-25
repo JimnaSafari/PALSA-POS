@@ -92,6 +92,6 @@ You can use, modify, and improve it, but please give credit if you find it usefu
 
 **Author**
 ----------
-Originally by Join Coder (www.youtube.com/@joincoder)
+JimnaSafari
 
 Maintained and updated for PALSA POS by JimnaSafari.
