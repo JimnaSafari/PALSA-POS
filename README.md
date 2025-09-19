@@ -1,66 +1,323 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🏪 Palsa POS - Complete Point of Sale System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+[![Laravel](https://img.shields.io/badge/Laravel-11.x-red.svg)](https://laravel.com)
+[![PHP](https://img.shields.io/badge/PHP-8.2+-blue.svg)](https://php.net)
+[![Docker](https://img.shields.io/badge/Docker-Ready-blue.svg)](https://docker.com)
+[![Kenya](https://img.shields.io/badge/Kenya-Ready-green.svg)](https://kenya.com)
+[![M-Pesa](https://img.shields.io/badge/M--Pesa-Integrated-green.svg)](https://developer.safaricom.co.ke)
 
-## About Laravel
+A comprehensive, production-ready Point of Sale (POS) system built with Laravel 11, optimized for the Kenyan market with M-Pesa integration and Kenya Shillings currency support.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🚀 **Features**
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 🏪 **Core POS Functionality**
+- ✅ **Product Management** - Complete CRUD with SKU/barcode support
+- ✅ **Real-time Inventory** - Automatic stock tracking and alerts
+- ✅ **Order Processing** - Full order lifecycle management
+- ✅ **Shopping Cart** - Advanced cart with real-time validation
+- ✅ **Customer Management** - User profiles and purchase history
+- ✅ **Receipt Generation** - PDF receipts with proper formatting
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 🇰🇪 **Kenyan Market Optimization**
+- ✅ **Kenya Shillings (KSh)** - Complete currency formatting
+- ✅ **M-Pesa Integration** - STK Push automation
+- ✅ **16% VAT** - Kenyan tax calculations
+- ✅ **Nairobi Timezone** - EAT timezone support
+- ✅ **Kenyan Phone Numbers** - Proper formatting and validation
+- ✅ **Local Products** - Sample Kenyan products included
 
-## Learning Laravel
+### 💳 **Payment Systems**
+- ✅ **M-Pesa** - Full STK Push integration (Safaricom)
+- ✅ **Airtel Money** - API ready
+- ✅ **T-Kash** - Telkom integration ready
+- ✅ **Equitel** - Equity Bank integration
+- ✅ **Bank Transfers** - Major Kenyan banks
+- ✅ **Cash Payments** - Manual confirmation
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 📊 **Business Intelligence**
+- ✅ **Real-time Dashboard** - Live sales and inventory metrics
+- ✅ **Sales Reports** - Daily, monthly, custom periods
+- ✅ **Inventory Reports** - Stock levels and movements
+- ✅ **Customer Analytics** - Purchase patterns and insights
+- ✅ **Profit/Loss Reports** - Financial analysis
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### 🔧 **Technical Features**
+- ✅ **Laravel 11** - Latest framework version
+- ✅ **Docker Ready** - Complete containerization
+- ✅ **API Endpoints** - Mobile app ready
+- ✅ **Role-based Access** - Admin, SuperAdmin, Customer
+- ✅ **Security** - Enterprise-grade protection
+- ✅ **Testing Suite** - Comprehensive tests
+- ✅ **Automated Tasks** - Scheduled maintenance
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 🛠️ **Quick Start**
 
-## Laravel Sponsors
+### **Prerequisites**
+- Docker & Docker Compose
+- Git
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### **Installation**
 
-### Premium Partners
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Ceteway/PALSA-POS.git
+   cd PALSA-POS
+   ```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+2. **Start with Docker**
+   ```bash
+   docker-compose up -d
+   ```
 
-## Contributing
+3. **Run setup**
+   ```bash
+   # Windows
+   ./complete-setup.bat
+   
+   # Linux/Mac
+   chmod +x complete-setup.sh && ./complete-setup.sh
+   ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+4. **Access the application**
+   - **Web App**: http://localhost:8000
+   - **Admin Panel**: http://localhost:8000/admin
+   - **API**: http://localhost:8000/api
 
-## Code of Conduct
+### **Default Credentials**
+- **SuperAdmin**: superadmin@gmail.com / admin123
+- **Admin**: admin@palsapos.com / admin123
+- **Customer**: customer@example.com / password
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## 🇰🇪 **M-Pesa Setup**
 
-## Security Vulnerabilities
+1. **Get Safaricom Credentials**
+   - Visit: https://developer.safaricom.co.ke/
+   - Apply for M-Pesa API access
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+2. **Update Environment**
+   ```bash
+   # Update .env file
+   MPESA_CONSUMER_KEY=your_consumer_key
+   MPESA_CONSUMER_SECRET=your_consumer_secret
+   MPESA_SHORTCODE=your_shortcode
+   MPESA_PASSKEY=your_passkey
+   MPESA_ENV=sandbox  # or 'production'
+   ```
 
-## License
+3. **Test Configuration**
+   ```bash
+   curl http://localhost:8000/api/mpesa/test-config
+   ```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 📱 **API Documentation**
+
+### **Authentication**
+```http
+POST /api/auth/login
+POST /api/auth/register
+POST /api/auth/logout
+```
+
+### **Products**
+```http
+GET /api/products
+GET /api/products/{id}
+POST /api/admin/products
+PUT /api/admin/products/{id}
+```
+
+### **Orders**
+```http
+GET /api/customer/orders
+POST /api/customer/orders
+GET /api/admin/orders
+```
+
+### **M-Pesa Payments**
+```http
+POST /api/mpesa/initiate-payment
+POST /api/mpesa/check-status
+```
+
+## 🏗️ **Architecture**
+
+### **Backend Stack**
+- **Framework**: Laravel 11
+- **Database**: MySQL 8.0
+- **Cache**: Redis
+- **Queue**: Redis
+- **Storage**: Local/S3 ready
+
+### **Frontend Stack**
+- **CSS**: Bootstrap 5 + Custom
+- **JavaScript**: Vanilla JS + Alpine.js
+- **Build**: Vite
+
+### **Infrastructure**
+- **Containerization**: Docker + Docker Compose
+- **Web Server**: Nginx
+- **PHP**: 8.2 with OPcache
+- **Process Manager**: Supervisor
+
+## 📊 **System Requirements**
+
+### **Minimum Requirements**
+- **RAM**: 2GB
+- **Storage**: 5GB
+- **CPU**: 2 cores
+- **Network**: Stable internet for M-Pesa
+
+### **Recommended (Production)**
+- **RAM**: 4GB+
+- **Storage**: 20GB+ SSD
+- **CPU**: 4+ cores
+- **Network**: High-speed internet
+- **SSL**: Required for M-Pesa
+
+## 🔒 **Security Features**
+
+- ✅ **Input Validation** - Comprehensive request validation
+- ✅ **CSRF Protection** - Cross-site request forgery protection
+- ✅ **SQL Injection** - Eloquent ORM protection
+- ✅ **XSS Protection** - Output sanitization
+- ✅ **File Upload Security** - Safe file handling
+- ✅ **Role-based Access** - Granular permissions
+- ✅ **API Authentication** - Sanctum token-based auth
+
+## 📈 **Performance**
+
+- ✅ **Database Optimization** - Proper indexing and queries
+- ✅ **Caching** - Redis for sessions and cache
+- ✅ **OPcache** - PHP bytecode caching
+- ✅ **Image Optimization** - Automatic image processing
+- ✅ **CDN Ready** - Asset optimization
+- ✅ **Queue System** - Background job processing
+
+## 🧪 **Testing**
+
+```bash
+# Run all tests
+docker-compose exec app php artisan test
+
+# Run specific test suite
+docker-compose exec app php artisan test --testsuite=Feature
+
+# Run with coverage
+docker-compose exec app php artisan test --coverage
+```
+
+## 📋 **Production Deployment**
+
+### **1. Environment Setup**
+```bash
+# Copy production environment
+cp .env.production .env
+# Update with your production values
+```
+
+### **2. SSL Certificate**
+```bash
+# Add SSL certificates to docker/nginx/ssl/
+```
+
+### **3. Deploy**
+```bash
+# Production deployment
+docker-compose -f docker-compose.production.yml up -d
+
+# Run deployment script
+./deploy.sh production
+```
+
+### **4. Monitoring**
+```bash
+# Check system status
+./production-status.bat
+```
+
+## 🔧 **Maintenance**
+
+### **Daily Tasks (Automated)**
+- ✅ **8 AM**: Daily sales reports
+- ✅ **Every 6 hours**: Low stock alerts
+- ✅ **3 AM**: Cache clearing
+- ✅ **1 AM**: Database backups
+
+### **Manual Commands**
+```bash
+# Clear caches
+docker-compose exec app php artisan optimize:clear
+
+# Run migrations
+docker-compose exec app php artisan migrate
+
+# Generate reports
+docker-compose exec app php artisan pos:daily-sales-report
+
+# Check low stock
+docker-compose exec app php artisan pos:low-stock-alerts
+```
+
+## 📚 **Documentation**
+
+- 📖 **[Complete System Guide](COMPLETE_SYSTEM_GUIDE.md)** - Full system operation
+- 📱 **[M-Pesa Integration Guide](MPESA_INTEGRATION_GUIDE.md)** - Payment setup
+- 🇰🇪 **[Kenyan Market Guide](KENYAN_MARKET_GUIDE.md)** - Local optimization
+- 💰 **[Currency Guide](KENYAN_CURRENCY_GUIDE.md)** - KES implementation
+- ✅ **[Production Checklist](PRODUCTION_CHECKLIST.md)** - Deployment guide
+
+## 🤝 **Contributing**
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 **License**
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 **Acknowledgments**
+
+- **Laravel Team** - Amazing framework
+- **Safaricom** - M-Pesa API
+- **Bootstrap Team** - UI framework
+- **Docker Team** - Containerization
+- **Kenyan Developers** - Local market insights
+
+## 📞 **Support**
+
+- **Documentation**: Check the guides in `/docs`
+- **Issues**: Create a GitHub issue
+- **Email**: support@palsapos.com
+- **Community**: Join our Discord server
+
+## 🎯 **Roadmap**
+
+### **Version 2.0 (Coming Soon)**
+- [ ] Mobile App (React Native)
+- [ ] Advanced Analytics
+- [ ] Multi-store Support
+- [ ] Inventory Forecasting
+- [ ] Customer Loyalty Program
+- [ ] Advanced Reporting
+
+### **Version 2.1**
+- [ ] WhatsApp Integration
+- [ ] SMS Notifications
+- [ ] Barcode Scanner App
+- [ ] Offline Mode
+- [ ] Multi-language Support
+
+---
+
+## 🏆 **Built for Kenya, Ready for the World**
+
+Palsa POS is specifically designed for the Kenyan market but built with global standards. Whether you're running a small shop in Nairobi or a large retail chain, Palsa POS scales with your business.
+
+**Start your digital transformation today!** 🚀
+
+---
+
+**Made with ❤️ in Kenya**
