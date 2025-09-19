@@ -51,10 +51,22 @@ RUN echo 'ServerName localhost' >> /etc/apache2/apache2.conf \
 # Create startup script
 RUN echo '#!/bin/bash' > /start.sh \
     && echo 'echo "Starting Laravel application..."' >> /start.sh \
+    && echo 'echo "Current directory: $(pwd)"' >> /start.sh \
+    && echo 'echo "Laravel files:"' >> /start.sh \
+    && echo 'ls -la' >> /start.sh \
+    && echo 'echo "Public directory:"' >> /start.sh \
+    && echo 'ls -la public/' >> /start.sh \
+    && echo 'echo "Clearing caches..."' >> /start.sh \
     && echo 'php artisan config:clear || true' >> /start.sh \
     && echo 'php artisan cache:clear || true' >> /start.sh \
-    && echo 'php artisan migrate --force || true' >> /start.sh \
-    && echo 'php artisan storage:link || true' >> /start.sh \
+    && echo 'php artisan route:clear || true' >> /start.sh \
+    && echo 'echo "Testing Laravel..."' >> /start.sh \
+    && echo 'php artisan --version || echo "Artisan failed"' >> /start.sh \
+    && echo 'echo "Running migrations..."' >> /start.sh \
+    && echo 'php artisan migrate --force || echo "Migration failed"' >> /start.sh \
+    && echo 'echo "Creating storage link..."' >> /start.sh \
+    && echo 'php artisan storage:link || echo "Storage link failed"' >> /start.sh \
+    && echo 'echo "Starting Apache..."' >> /start.sh \
     && echo 'apache2-foreground' >> /start.sh \
     && chmod +x /start.sh
 
