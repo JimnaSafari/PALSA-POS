@@ -22,20 +22,17 @@ echo ================================
 echo.
 echo 1. Go to https://render.com
 echo 2. Sign up/Login with GitHub
-echo 3. Click "New +" then "Blueprint"
-echo 4. Select your PALSA-POS repository
-echo 5. Render will detect render.yaml automatically
-echo 6. Click "Apply" to deploy
-echo.
-echo Alternative Manual Setup:
-echo 1. New + → Web Service
-echo 2. Connect PALSA-POS repository
-echo 3. Environment: PHP
-echo 4. Build Command: composer install --no-dev --optimize-autoloader
-echo 5. Start Command: php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=$PORT
-echo 6. Add environment variables (see RENDER_DEPLOYMENT_GUIDE.md)
-echo 7. Create MySQL database service
-echo 8. Deploy!
+echo 3. Create PostgreSQL database first:
+echo    - New + → PostgreSQL
+echo    - Name: palsa-pos-db
+echo    - Free tier
+echo 4. Create Web Service:
+echo    - New + → Web Service
+echo    - Connect PALSA-POS repository
+echo    - Runtime: Docker
+echo    - Dockerfile: ./Dockerfile.render
+echo 5. Add environment variables (see RENDER_DEPLOYMENT_GUIDE.md)
+echo 6. Deploy!
 echo.
 echo Your app will be available at:
 echo https://your-app-name.onrender.com

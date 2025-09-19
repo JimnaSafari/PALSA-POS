@@ -18,38 +18,32 @@ Render is often more reliable for Laravel applications and provides excellent PH
 2. Sign up with GitHub
 3. Connect your GitHub account
 
-### **2. Deploy from GitHub**
-1. Click **"New +"** → **"Blueprint"**
-2. Connect your **`PALSA-POS`** repository
-3. Render will detect the `render.yaml` file
-4. Click **"Apply"**
+### **2. Manual Setup (Recommended)**
 
-### **3. Alternative: Manual Setup**
-If Blueprint doesn't work:
+#### **Step 1: Create Database First**
+1. **New +** → **"PostgreSQL"** (MySQL not available on free tier)
+2. **Name**: `palsa-pos-db`
+3. **Database Name**: `palsa_pos`
+4. **User**: `palsa_user`
+5. **Region**: Choose closest to you
+6. **Plan**: Free tier
+7. **Create Database**
 
-#### **Create Web Service:**
+#### **Step 2: Create Web Service**
 1. **New +** → **"Web Service"**
 2. **Connect Repository**: Select `PALSA-POS`
 3. **Settings**:
    - **Name**: `palsa-pos`
-   - **Environment**: `PHP`
+   - **Runtime**: `Docker`
+   - **Dockerfile Path**: `./Dockerfile.render`
    - **Build Command**: 
      ```bash
      composer install --no-dev --optimize-autoloader
-     php artisan config:cache
-     php artisan route:cache
-     php artisan view:cache
      ```
    - **Start Command**: 
      ```bash
      php artisan migrate --force && php artisan storage:link && php artisan serve --host=0.0.0.0 --port=$PORT
      ```
-
-#### **Create Database:**
-1. **New +** → **"MySQL"**
-2. **Name**: `palsa-pos-db`
-3. **Plan**: Free tier
-4. **Create Database**
 
 ### **4. Environment Variables**
 In your web service settings, add these environment variables:
@@ -69,14 +63,14 @@ QUEUE_CONNECTION=sync
 MAIL_MAILER=log
 ```
 
-**Database Variables (from your MySQL service):**
+**Database Variables (from your PostgreSQL service):**
 ```
-DB_CONNECTION=mysql
-DB_HOST=[Your MySQL Host]
-DB_PORT=[Your MySQL Port]
+DB_CONNECTION=pgsql
+DB_HOST=[Your PostgreSQL Host]
+DB_PORT=[Your PostgreSQL Port]
 DB_DATABASE=[Your Database Name]
-DB_USERNAME=[Your MySQL User]
-DB_PASSWORD=[Your MySQL Password]
+DB_USERNAME=[Your PostgreSQL User]
+DB_PASSWORD=[Your PostgreSQL Password]
 ```
 
 **Optional M-Pesa Variables:**
