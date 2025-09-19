@@ -1,0 +1,100 @@
+PALSA POS System
+=================
+
+A modern Point of Sale (POS) System built with Laravel.
+
+---
+
+**Project Features**
+--------------------
+- User and Admin dashboards
+- Product, category, and order management
+- Cart and checkout system
+- Payment tracking
+- User profile management
+- Google social login (GitHub login removed)
+- Responsive UI for admin and users
+
+---
+
+**Setup Instructions**
+---------------------
+
+1. **Clone the Repository**
+   ```
+   git clone https://github.com/JimnaSafari/PALSA-POS.git
+   cd PALSA-POS
+   ```
+
+2. **Install Dependencies**
+   ```
+   composer install
+   npm install
+   ```
+
+3. **Set Up the Database**
+   - Option 1: Import the `mypos.sql` file (found in the `database/` folder).
+   - Option 2: Run migrations and seeders:
+     ```
+     php artisan migrate --seed
+     ```
+
+4. **Configure Environment**
+   - Copy `.env.example` to `.env` and update your database and mail settings.
+   - Generate an app key:
+     ```
+     php artisan key:generate
+     ```
+
+5. **Set Up Google API Credentials for Social Login**
+   - Go to the [Google Cloud Console](https://console.developers.google.com/).
+   - Create a new project (or select an existing one).
+   - Go to "APIs & Services" > "Credentials".
+   - Click "Create Credentials" > "OAuth client ID".
+   - Set the application type to "Web application".
+   - Add your authorized redirect URI (e.g., `http://localhost:8000/auth/google/callback`).
+   - After creation, copy the `Client ID` and `Client Secret`.
+   - In your `.env` file, add:
+     ```
+     GOOGLE_CLIENT_ID=your-client-id
+     GOOGLE_CLIENT_SECRET=your-client-secret
+     ```
+
+6. **Start the Development Server**
+   ```
+   php artisan serve
+   npm run dev
+   ```
+
+---
+
+**Default SuperAdmin Login**
+---------------------------
+- Email: superadmin@gmail.com
+- Password: admin123
+
+---
+
+**Customization & Cleanup**
+--------------------------
+- The project uses a free UI template; some unused files may remain in `public/admin`, `public/customer`, etc.
+- You can safely delete or modify template files not referenced in the codebase.
+- Branding and UI can be customized in the Blade templates under `resources/views/`.
+
+---
+
+**Contribution & License**
+-------------------------
+This project is open-source and shared freely.
+You can use, modify, and improve it, but please give credit if you find it useful!
+
+---
+
+**Author**
+----------
+JimnaSafari
+
+Maintained and updated for PALSA POS by JimnaSafari.
+```
+
+</rewritten_file>
