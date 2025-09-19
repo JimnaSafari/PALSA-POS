@@ -20,17 +20,12 @@ return [
     'allowed_methods' => ['*'],
 
     'allowed_origins' => [
-        'http://localhost:3000',
-        'http://127.0.0.1:3000',
-        'https://*.vercel.app',
-        'https://*.netlify.app',
-        'https://palsa-pos-frontend.vercel.app',
-        'https://palsa-pos.vercel.app',
+        'http://localhost:8000',
+        'http://127.0.0.1:8000',
     ],
 
     'allowed_origins_patterns' => [
-        '/^https:\/\/.*\.vercel\.app$/',
-        '/^https:\/\/.*\.netlify\.app$/',
+        '/^https:\/\/.*\.railway\.app$/',
     ],
 
     'allowed_headers' => ['*'],

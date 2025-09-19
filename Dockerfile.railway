@@ -34,6 +34,9 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Copy application files
 COPY . /var/www/html
 
+# Use Railway-specific environment file if it exists
+RUN if [ -f /var/www/html/.env.railway ]; then cp /var/www/html/.env.railway /var/www/html/.env; fi
+
 # Set permissions
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html/storage \
