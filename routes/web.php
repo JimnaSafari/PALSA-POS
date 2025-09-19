@@ -28,6 +28,16 @@ Route::middleware('auth')->group(function () {
 
 Route::redirect('/','auth/login');
 
+// Health check endpoint for Railway
+Route::get('/health', function () {
+    return response()->json([
+        'status' => 'ok',
+        'timestamp' => now(),
+        'app' => config('app.name'),
+        'version' => '1.0.0'
+    ]);
+});
+
 Route::middleware('admin')->group(function(){
 Route::get('auth/register',[AuthController::class,'registerPage'])->name('userRegister');
 Route::get('auth/login',[AuthController::class,'loginPage'])->name('userLogin');
