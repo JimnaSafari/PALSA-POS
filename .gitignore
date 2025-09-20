@@ -1,0 +1,80 @@
+# Laravel
+/node_modules
+/public/build
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
+.env
+.env.backup
+.env.production
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+auth.json
+npm-debug.log
+yarn-error.log
+/.fleet
+/.idea
+/.vscode
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Docker
+docker-compose.override.yml
+
+# Logs
+*.log
+storage/logs/*.log
+
+# Cache
+bootstrap/cache/*.php
+storage/framework/cache/data/*
+storage/framework/sessions/*
+storage/framework/views/*
+
+# Uploads
+public/productImages/*
+public/userProfile/*
+public/adminProfile/*
+public/payslipRecords/*
+!public/productImages/.gitkeep
+!public/userProfile/.gitkeep
+!public/adminProfile/.gitkeep
+!public/payslipRecords/.gitkeep
+
+# IDE
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.temp
+
+# Database
+*.sqlite
+*.db
+
+# Backup files
+*.bak
+*.backup
+
+# Compiled assets
+/public/css
+/public/js
+/public/mix-manifest.json
+
+# Testing
+.phpunit.result.cache
+coverage/
+
+# Production specific
+.env.production.local
