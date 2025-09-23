@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HealthController;
 use Laravel\Socialite\Facades\Socialite;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProviderController;
@@ -12,6 +13,9 @@ use App\Http\Controllers\Admin\AdminDashboardController;
 require __DIR__.'/auth.php';
 require_once __DIR__.'/admin.php';
 require_once __DIR__.'/user.php';
+
+// Health Check Route
+Route::get('/health', [HealthController::class, 'check'])->name('health.check');
 
 // $user->token
 Route::get('/dashboard', function () {
@@ -37,14 +41,3 @@ Route::get('auth/login',[AuthController::class,'loginPage'])->name('userLogin');
 //login for google only
 Route::get('/auth/google/redirect', [ProviderController::class,'redirect']);
 Route::get('/auth/google/callback', [ProviderController::class, 'callback']);
-
-
-
-
-
-
-
-
-
-
-
