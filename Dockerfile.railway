@@ -83,6 +83,16 @@ RUN echo '#!/bin/bash' > /start.sh \
     && echo 'php artisan storage:link || echo "Storage link failed"' >> /start.sh \
     && echo 'echo "Setting permissions..."' >> /start.sh \
     && echo 'chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache || true' >> /start.sh \
+    && echo 'chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache || true' >> /start.sh \
+    && echo 'echo "Testing Laravel routes..."' >> /start.sh \
+    && echo 'php artisan route:list | head -10 || echo "Route list failed"' >> /start.sh \
+    && echo 'echo "Testing basic Laravel functionality..."' >> /start.sh \
+    && echo 'php -r "echo \"PHP working\\n\";"' >> /start.sh \
+    && echo 'php -r "require \"vendor/autoload.php\"; echo \"Composer autoload working\\n\";"' >> /start.sh \
+    && echo 'echo "Testing Laravel bootstrap..."' >> /start.sh \
+    && echo 'php -r "require \"bootstrap/app.php\"; echo \"Laravel bootstrap working\\n\";" || echo "Laravel bootstrap failed"' >> /start.sh \
+    && echo 'echo "Checking APP_KEY..."' >> /start.sh \
+    && echo 'php artisan tinker --execute="echo \"APP_KEY: \" . (config(\"app.key\") ? \"set\" : \"not set\");"' >> /start.sh \
     && echo 'echo "Starting Apache..."' >> /start.sh \
     && echo 'apache2-foreground' >> /start.sh \
     && chmod +x /start.sh
