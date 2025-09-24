@@ -69,7 +69,7 @@ RUN echo '#!/bin/bash' > /start.sh \
     && chmod +x /start.sh
 
 # Expose port for Railway
-EXPOSE 80
+EXPOSE 9000
 
 # Run startup script
 CMD ["/bin/bash", "-c", "/start.sh"]
