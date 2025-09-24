@@ -37,7 +37,8 @@ RUN composer install --no-dev --optimize-autoloader --no-interaction
 
 # Configure Apache for Laravel
 RUN echo 'ServerName localhost' >> /etc/apache2/apache2.conf \
-    && echo '<VirtualHost *:80>' > /etc/apache2/sites-available/000-default.conf \
+    && echo 'Listen 9000' >> /etc/apache2/ports.conf \
+    && echo '<VirtualHost *:9000>' > /etc/apache2/sites-available/000-default.conf \
     && echo '    ServerName localhost' >> /etc/apache2/sites-available/000-default.conf \
     && echo '    DocumentRoot /var/www/html/public' >> /etc/apache2/sites-available/000-default.conf \
     && echo '    <Directory /var/www/html/public>' >> /etc/apache2/sites-available/000-default.conf \
