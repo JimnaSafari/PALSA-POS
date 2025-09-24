@@ -66,6 +66,8 @@ RUN echo '#!/bin/bash' > /start.sh \
     && echo 'echo "DB_HOST: $DB_HOST"' >> /start.sh \
     && echo 'echo "DB_DATABASE: $DB_DATABASE"' >> /start.sh \
     && echo 'echo "APP_KEY: ${APP_KEY:0:10}..."' >> /start.sh \
+    && echo 'echo "=== TESTING LARAVEL RESPONSE ==="' >> /start.sh \
+    && echo 'curl -s http://localhost:9000/health || echo "Health check failed"' >> /start.sh \
     && echo 'echo "=== STARTING APACHE ==="' >> /start.sh \
     && echo 'apache2-foreground' >> /start.sh \
     && chmod +x /start.sh

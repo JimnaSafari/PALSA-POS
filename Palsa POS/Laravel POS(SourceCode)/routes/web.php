@@ -17,6 +17,17 @@ require_once __DIR__.'/user.php';
 // Health Check Route
 Route::get('/health', [HealthController::class, 'check'])->name('health.check');
 
+// Simple test route for debugging
+Route::get('/test', function () {
+    return response()->json([
+        'status' => 'ok',
+        'message' => 'Laravel is working',
+        'timestamp' => now(),
+        'php_version' => PHP_VERSION,
+        'laravel_version' => app()->version()
+    ]);
+})->name('test');
+
 // $user->token
 Route::get('/dashboard', function () {
     return view('dashboard');
