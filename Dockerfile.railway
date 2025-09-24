@@ -50,7 +50,8 @@ RUN echo 'ServerName localhost' >> /etc/apache2/apache2.conf \
 
 # Create startup script
 RUN echo '#!/bin/bash' > /start.sh \
-    && echo 'set -e' >> /start.sh \
+    && echo 'set -x' >> /start.sh \
+    && echo 'exec > /proc/1/fd/1 2>/proc/1/fd/2' >> /start.sh \
     && echo 'echo "Starting Laravel application..."' >> /start.sh \
     && echo 'echo "Current directory: $(pwd)"' >> /start.sh \
     && echo 'echo "Environment variables:"' >> /start.sh \
@@ -100,4 +101,5 @@ RUN echo '#!/bin/bash' > /start.sh \
 # Expose port for Railway
 EXPOSE 80
 
-CMD ["/start.sh"]
+# Run startup script
+CMD ["/bin/bash", "-c", "/start.sh"]
