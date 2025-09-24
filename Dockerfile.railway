@@ -35,9 +35,9 @@ RUN chown -R www-data:www-data /var/www/html \
 # Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader --no-interaction
 
-# Configure Apache for Laravel
+# Configure Apache to listen on port 9000 and setup virtual host
 RUN echo 'ServerName localhost' >> /etc/apache2/apache2.conf \
-    && echo 'Listen 9000' >> /etc/apache2/ports.conf \
+    && sed -i 's/Listen 80/Listen 9000/' /etc/apache2/ports.conf \
     && echo '<VirtualHost *:9000>' > /etc/apache2/sites-available/000-default.conf \
     && echo '    ServerName localhost' >> /etc/apache2/sites-available/000-default.conf \
     && echo '    DocumentRoot /var/www/html/public' >> /etc/apache2/sites-available/000-default.conf \
@@ -47,7 +47,8 @@ RUN echo 'ServerName localhost' >> /etc/apache2/apache2.conf \
     && echo '    </Directory>' >> /etc/apache2/sites-available/000-default.conf \
     && echo '    ErrorLog ${APACHE_LOG_DIR}/error.log' >> /etc/apache2/sites-available/000-default.conf \
     && echo '    CustomLog ${APACHE_LOG_DIR}/access.log combined' >> /etc/apache2/sites-available/000-default.conf \
-    && echo '</VirtualHost>' >> /etc/apache2/sites-available/000-default.conf
+    && echo '</VirtualHost>' >> /etc/apache2/sites-available/000-default.conf \
+    && a2ensite 000-default.conf
 
 # Create startup script
 RUN echo '#!/bin/bash' > /start.sh \
@@ -57,7 +58,7 @@ RUN echo '#!/bin/bash' > /start.sh \
     && echo 'ls -la' >> /start.sh \
     && echo 'echo "=== BASIC CHECKS ==="' >> /start.sh \
     && echo 'echo "PHP version: $(php --version | head -1)"' >> /start.sh \
-    && echo 'echo "Testing PHP: $(php -r "echo \"PHP OK\";" 2>&1)"' >> /start.sh \
+    && echo 'echo "Testing PHP: $(php -r \"echo \\\"PHP OK\\\";\" 2>&1)"' >> /start.sh \
     && echo 'echo "=== LARAVEL CHECKS ==="' >> /start.sh \
     && echo 'if [ -f "artisan" ]; then echo "Artisan file exists"; else echo "Artisan file missing"; fi' >> /start.sh \
     && echo 'if [ -d "vendor" ]; then echo "Vendor directory exists"; else echo "Vendor directory missing"; fi' >> /start.sh \
@@ -69,8 +70,8 @@ RUN echo '#!/bin/bash' > /start.sh \
     && echo 'apache2-foreground' >> /start.sh \
     && chmod +x /start.sh
 
-# Expose port for Railway
+# Expose port 9000
 EXPOSE 9000
 
 # Run startup script
-CMD ["/bin/bash", "-c", "/start.sh"]
+CMD ["/bin/bash", "/start.sh"]
