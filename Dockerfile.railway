@@ -50,22 +50,39 @@ RUN echo 'ServerName localhost' >> /etc/apache2/apache2.conf \
 
 # Create startup script
 RUN echo '#!/bin/bash' > /start.sh \
+    && echo 'set -e' >> /start.sh \
     && echo 'echo "Starting Laravel application..."' >> /start.sh \
     && echo 'echo "Current directory: $(pwd)"' >> /start.sh \
+    && echo 'echo "Environment variables:"' >> /start.sh \
+    && echo 'echo "DB_HOST: $DB_HOST"' >> /start.sh \
+    && echo 'echo "DB_DATABASE: $DB_DATABASE"' >> /start.sh \
+    && echo 'echo "APP_URL: $APP_URL"' >> /start.sh \
     && echo 'echo "Laravel files:"' >> /start.sh \
     && echo 'ls -la' >> /start.sh \
     && echo 'echo "Public directory:"' >> /start.sh \
     && echo 'ls -la public/' >> /start.sh \
     && echo 'echo "Clearing caches..."' >> /start.sh \
-    && echo 'php artisan config:clear || true' >> /start.sh \
-    && echo 'php artisan cache:clear || true' >> /start.sh \
-    && echo 'php artisan route:clear || true' >> /start.sh \
+    && echo 'php artisan config:clear || echo "Config clear failed"' >> /start.sh \
+    && echo 'php artisan cache:clear || echo "Cache clear failed"' >> /start.sh \
+    && echo 'php artisan route:clear || echo "Route clear failed"' >> /start.sh \
     && echo 'echo "Testing Laravel..."' >> /start.sh \
     && echo 'php artisan --version || echo "Artisan failed"' >> /start.sh \
+    && echo 'echo "Waiting for database connection..."' >> /start.sh \
+    && echo 'for i in {1..30}; do' >> /start.sh \
+    && echo '  if php artisan tinker --execute="try { DB::connection()->getPdo(); echo \"DB connected\"; exit(0); } catch(Exception \$e) { echo \"DB not ready: \$e->getMessage()\"; exit(1); }" 2>/dev/null; then' >> /start.sh \
+    && echo '    echo "Database connection successful"' >> /start.sh \
+    && echo '    break' >> /start.sh \
+    && echo '  else' >> /start.sh \
+    && echo '    echo "Database not ready, waiting... (\$i/30)"' >> /start.sh \
+    && echo '    sleep 2' >> /start.sh \
+    && echo '  fi' >> /start.sh \
+    && echo 'done' >> /start.sh \
     && echo 'echo "Running migrations..."' >> /start.sh \
-    && echo 'php artisan migrate --force || echo "Migration failed"' >> /start.sh \
+    && echo 'php artisan migrate --force || echo "Migration failed - continuing anyway"' >> /start.sh \
     && echo 'echo "Creating storage link..."' >> /start.sh \
     && echo 'php artisan storage:link || echo "Storage link failed"' >> /start.sh \
+    && echo 'echo "Setting permissions..."' >> /start.sh \
+    && echo 'chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache || true' >> /start.sh \
     && echo 'echo "Starting Apache..."' >> /start.sh \
     && echo 'apache2-foreground' >> /start.sh \
     && chmod +x /start.sh
